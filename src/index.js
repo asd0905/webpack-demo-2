@@ -1,7 +1,7 @@
 import _ from 'lodash';
 
 function component() {
-    console.log(1111);
+    console.log(222);
     const element = document.createElement('div');
 
     // Lodash, currently included via a script, is required for this line to work (before)

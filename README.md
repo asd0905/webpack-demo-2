@@ -43,3 +43,10 @@ require("foo") 를 실행했을 때 "main"으로 지정한 모듈의 exports 객
 - ./src/index.js를 ./dis/main.js로 변환해줌
 - 사용하던 <script>를 main.js로 수정해주면 사용
 ```
+
+## webpack 옵션으로 컴파일하기 (webpack.config.js)
+```
+- webpack.config.js 파일 생성
+- 필요한 옵션 작성
+- npx webpack --config webpack.config.js 
+```
