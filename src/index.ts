@@ -20,5 +20,5 @@ export class TestClass {
     }
 }
 
-const testC = new TestClass();
-testC.test();
+/*const testC = new TestClass();
+testC.test();*/

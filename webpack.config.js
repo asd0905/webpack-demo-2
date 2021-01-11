@@ -18,6 +18,7 @@ module.exports = {
     output: {
         filename: 'main.js',
         path: path.resolve(__dirname, 'dist'),
+        libraryTarget: 'umd',
     },
     target: ['web', 'es5'],
     optimization: {
