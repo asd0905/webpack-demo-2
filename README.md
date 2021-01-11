@@ -29,3 +29,17 @@ require("foo") 를 실행했을 때 "main"으로 지정한 모듈의 exports 객
  모듈 ID는 패키지 루트에 상대적인 경로를 지정해야 한다. 
  대부분의 모듈에 있어서 메인 스크립트를 갖는 것은 유용하지만 종종 그렇지 않을수도 있다.
 ```
+
+## import lodash (모듈)
+```
+- npm install name (--save)
+- 사용하려는 곳에서 import
+  예: index.js 에서 import _ from 'lodash'로 사용
+```
+
+## webpack 사용
+```
+- npx webpack 명령어
+- ./src/index.js를 ./dis/main.js로 변환해줌
+- 사용하던 <script>를 main.js로 수정해주면 사용
+```
