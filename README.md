@@ -50,3 +50,8 @@ require("foo") 를 실행했을 때 "main"으로 지정한 모듈의 exports 객
 - 필요한 옵션 작성
 - npx webpack --config webpack.config.js 
 ```
+
+## webpack package.json에 명령어 추가
+```
+- script옵션에 "build": "webpack" (--watch 붙이면 실시간 감사)
+```
