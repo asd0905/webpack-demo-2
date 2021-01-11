@@ -16,6 +16,7 @@ npm install webpack webpack-cli --save-dev
 
 ### package.json
 ```
+- 옵션
 - private
  만약 "private": true 로 package.json 에 설정 해두면, publish 명령을 거부하게 된다.
  이 플래그는 개인적으로만 사용하는 저장소를 무심코 publish 해 버리는 것을 방지한다. 
@@ -78,7 +79,7 @@ require("foo") 를 실행했을 때 "main"으로 지정한 모듈의 exports 객
 ```
 - ts-loader사용 시에 필요한 옵션들 적용
 - 옵션
-libraryTarget: 'umd'
+- libraryTarget: 'umd'
 지역변수를 전역변수로 만들어주는 옵션
 쿨리스처럼 파일안에서 사용하던 함수를
 밖에서 불러와야하는 경우 일반적으로는 사용할 수 없다.
@@ -95,6 +96,7 @@ libraryTarget: 'umd'
 ```
 - tsconfig.json에 있는 sourceMap 옵션은 타입스크립트 형태로 보여준다.
   webpack.config.js에서 sourceMap 옵션을 필요로 한다.
+  
 - webpack.config.js의 sourceMap 옵션은 tsconfig의 그것이 필요 조건은 아니지만
   typescript를 트랜스파일할 때 true, false의 여부에 따라 자바스크립트 방식으로 바뀌어 나오게
   하거나 typescript 그대로 나오게 한다.
@@ -107,6 +109,7 @@ target의 default는 es3
 트랜스파일링한 결과인 파일의 언어를 지정 (사용한 모듈이 es6인데 target을 es5로 하면
 es5의 언어로 변경되어 이를 사용하는 브라우저에서도 사용가능)
 webpack.config.js에서 target을 같이 사용해줘야 한다.
+
 - webpack.congif.js
 target의 default는 web or weblist
 typescript에서 tsconfg로 es5바꿔서 트랜스파일링했더라도
