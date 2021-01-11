@@ -55,3 +55,11 @@ require("foo") 를 실행했을 때 "main"으로 지정한 모듈의 exports 객
 ```
 - script옵션에 "build": "webpack" (--watch 붙이면 실시간 감사)
 ```
+
+### webpack.config.js
+```
+- devtool
+소스맵만들어 주는 옵션
+- optimization
+압축여부 해주는 옵션
+```
