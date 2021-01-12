@@ -116,4 +116,76 @@ typescript에서 tsconfg로 es5바꿔서 트랜스파일링했더라도
 모듈을 es5로 사용했지만 typescript언어다.
 이를 또 es5로 바꿔줘야지 ie같은 브라우저에서 사용할 수 있는
 es5로서의 결과물이 된다.
+
+
+ts-loader를 거치면서 typescript가 javascript으로 바껴서 내려옵니다.
+그렇지만 여전히 es6형식의 문법이 그대로 내려오는 경우가 있음 (화살표, 등등)
+그래서 webpack에서 한번 더 걸러준다 es5이면서 자바스크립트로.
+```
+
+## babel
+```
+- @babel/preset-typescript
+typescript를 사용하기위해 ts-loader말고 
+babel에 포함되어있는 preset을 사용해도 된다.
+npm 트렌드를 볼때 ts-loader보다 더 많이 사용하는 추세이고
+이전에는 추가로 설치해줘야하는 것들이 많았고 webpack/babel조합의 복잡함을
+더 늘리는 걸로보이기도 했으며 무엇보다 미지원 syntax가 많아서
+덜 사용하다가 요즘에는 부족한 점들이 많이 개선되어
+사용자들에게 많이 사용되어지는것 같다.
+용량은 2배정도 ts-loader가 작다. 옵션도 많고
+
+- polyfill
+@babel/polyfill이 babel7.4.0 버전 부터 deprecated되었다.
+그러고 나서 나온 옵션이
+useBuiltIns: 'usage' | 'entry' | false, defaults to false
+여기서 중요한건 usage! entry는 필요한 모듈을 각각 다 import해줘야하지만
+이는 필요한 부분들이 자동으로 로드되고 겹치는 부분이 있으면 한번만 로드 된다.
+"corejs":3,
+"shippedProposals": true
+or
+"corejs":{ version: 3, proposals: true },
+이런식으로 넣어주면 된다.
+
+```
+
+```
+모듈들을 번들하기 위해서
+webpack을 사용
+typescript를 사용하기 위해서 ts-loader 사용
+여기까지 하게되면
+typescript, es6 -> javascript, es5 문법으로 바꿔준다.
+하지만 es6에서 사용하는 새로나온 객체들의 문제로
+낮은 브라우저에선 polyfill문제가 발생할 수 있다
+이때 사용하는것이 babel이다.
+앞으로는 ts-loader도 babel/preset-typescript로 사용할 수 있을것 같다.
+```
+
+
+```
+1. typescript를 사용해 번들하게 되면
+typescript(es6)을 javascript(es5)로 바꿔줘야한다. (ie를 위해서)
+여기서 ts-loaer를 이용해서 es6에서 사용하던 문법을 es5에서 사용할 수 있도록
+트랜스파일할 수 있다. ts-loader에서 이작업을 해주면 해준작업그대로
+처리받을 수 있도록 webpack에서도 es5로 받아야한다.
+webpack target es5에서는 es6문법을 es5문법의 자바스크립트로 바꿔준다.
+
+2. babel을 사용해서 번들하게 되면
+es6에서 사용하던 문법을 es5형식으로 바꿨닫고 해도
+es6에서 새로생긴 객체들은 그대로 나오게 되어 (promise...) ie와같은
+하위 브라우저에서는 사용할 수 없게 된다.
+그래서 babel에서 이를 polypill해줘야 한다.
+예전에는 @bael/polyfill을 사용했지만 7버전 이상이 도면서
+deprecated되었고 core-js를 사용해서 보다 쉽게 사용할 수 있다.
+
+3. 요즘에는 npm trends를 살펴보면
+ts-loader보다 babel/preset-typescript를 더 많이 사용한다.
+옵션이 많고 가벼운 ts-loader
+babel의 프리셋중 하나이며 가장 많이 사용되는 babel/preset-typescript.
+
+웹팩의 타입스크립트 로더에는 인기있는 ts-loader 와 awesome-typescript-loader 가 
+있는데 awesome-typescript-loader는 일부 작업의 부하로 컴파일 속도가 느리며, 
+ts-loader는 많은 복잡한 캐시 로더를 함께 설정하여 사용해야 하는 불편함이 있다.
+그리고 하나의 컴파일러를 관리하는게 더 보기에도 사용하기에도 더 쉬울 수 있기
+때문이다.
 ```
