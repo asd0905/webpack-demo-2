@@ -6,6 +6,14 @@ module.exports = {
     module: {
         rules: [
             {
+                test: /\.(js|ts)$/,
+                exclude: /(node_modules)/,
+                include: path.resolve(__dirname, 'src'),
+                use: {
+                    loader: 'babel-loader',
+                }
+            },
+            /*{
                 test: /\.tsx?$/,
                 use: 'ts-loader',
                 exclude: /node_modules/,

@@ -15,10 +15,20 @@ export class TestClass {
     constructor() {
     }
 
-    test() {
-        console.log('test1');
+    func() {
+        this.test(() => {
+            console.log('func');
+        });
+    }
 
-        let myFirstPromise = new Promise((resolve, reject) => {
+    test(callback?: any) {
+        if (callback) {
+            callback();
+        } else {
+            console.log('test1');
+        }
+
+        /*let myFirstPromise = new Promise((resolve, reject) => {
             // We call resolve(...) when what we were doing asynchronously was successful, and reject(...) when it failed.
             // In this example, we use setTimeout(...) to simulate async code.
             // In reality, you will probably be using something like XHR or an HTML5 API.
@@ -32,9 +42,10 @@ export class TestClass {
         })
             .catch((err: Error) => {
                 console.log(err);
-            })
+            })*/
     }
 }
 
-/*const testC = new TestClass();
-testC.test();*/
+const testC = new TestClass();
+testC.test();
+testC.func();
